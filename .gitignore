@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Licensed data (LSEG/Refinitiv) must not be committed
+data/prices/
+data/dividends/
+data/factors/
+example_data/
+
+# Generated results
+outputs/*
+!outputs/.gitkeep
+example_outputs/
+
+# OS / editors
+.DS_Store
+~$*
+.idea/
+.vscode/

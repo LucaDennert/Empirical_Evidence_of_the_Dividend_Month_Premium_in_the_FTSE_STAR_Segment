@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code or build on these results, please cite the thesis."
+title: "Empirical Evidence of the Dividend Month Premium in the FTSE STAR Segment: A Multi-Factor Asset Pricing Approach"
+type: software
+authors:
+  - family-names: Dennert
+    given-names: Luca
+    affiliation: "Università Bocconi"
+version: 1.0.0
+license: MIT
+preferred-citation:
+  type: thesis
+  thesis-type: "Bachelor of Science thesis"
+  title: "Empirical Evidence of the Dividend Month Premium in the FTSE STAR Segment: A Multi-Factor Asset Pricing Approach"
+  authors:
+    - family-names: Dennert
+      given-names: Luca
+  institution:
+    name: "Università Bocconi"
+    city: Milan
+    country: IT
