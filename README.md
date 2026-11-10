@@ -158,20 +158,23 @@ Closing before the ex-date excludes the dividend and the mechanical price drop.
 
 $$CR_{i,T} = \frac{P_{i,T-1}}{P_{i,T-15}} - 1 \quad (4.1) \qquad\qquad CAR_{i,T} = \frac{Bid_{i,T-1}}{Ask_{i,T-15}} - 1 \quad (4.2)$$
 
-**Dividend yield.** $DY_{i,T} = D^{net}_{i,T} / P_{i,T-15}$. It is measured at
-entry, so the signal is known ex ante and is not inflated by the run-up.
+**Dividend yield.** Measured at entry, so the signal is known ex ante and is
+not inflated by the run-up:
+
+$$DY_{i,T} = \frac{D^{net}_{i,T}}{P_{i,T-15}}$$
+
 Cutoffs go from 0% to 5.5% in steps of 0.25%, and cutoff c selects the events
 with DY ≥ c.
 
 **Factors.** Daily European factors are compounded over the 15 trading days
 preceding the ex-date, on the Italian trading calendar. The risk-free rate is
-compounded in the same way to obtain $CRF_T$:
+compounded in the same way to obtain CRF<sub>T</sub>:
 
 $$CFR_{k,T} = \prod_{t=T-15}^{T-1} (1 + F_{k,t}) - 1 \quad (4.3)$$
 
 **Alphas.** For each cutoff and model, a cross-sectional regression across events:
 
-$$CR_{i,T} - CRF_{T} = \alpha + \sum_k \beta_k \, CFR_{k,T} + \varepsilon_{i,T} \quad (4.9)$$
+$$CR_{i,T} - CRF_{T} = \alpha + \sum_k \beta_k CFR_{k,T} + \varepsilon_{i,T} \quad (4.9)$$
 
 with factors {MKT} (CAPM), {MKT, SMB, HML} (FF3), {MKT, SMB, HML, UMD} (C4F)
 and {MKT, SMB, HML, RMW, CMA} (FF5). Significance refers to the one-sided test
