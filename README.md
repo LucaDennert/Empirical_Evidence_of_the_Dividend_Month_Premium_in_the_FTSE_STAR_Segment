@@ -166,18 +166,23 @@ $$DY_{i,T} = \frac{D^{net}_{i,T}}{P_{i,T-15}}$$
 Cutoffs go from 0% to 5.5% in steps of 0.25%, and cutoff c selects the events
 with DY ≥ c.
 
-**Factors.** Daily European factors are compounded over the 15 trading days
-preceding the ex-date, on the Italian trading calendar. The risk-free rate is
+**Factors.** Regional (European) factors are used rather than global ones,
+since country and regional models price local stocks better than global
+models (Griffin, 2002; Fama and French, 2012, 2017). Daily factors are
+compounded over the 15 trading days preceding the ex-date, on the Italian
+trading calendar. The risk-free rate is
 compounded in the same way to obtain CRF<sub>T</sub>:
 
 $$CFR_{k,T} = \prod_{t=T-15}^{T-1} (1 + F_{k,t}) - 1 \quad (4.3)$$
 
-**Alphas.** For each cutoff and model, a cross-sectional regression across events:
+**Alphas.** Jensen (1968) alphas are estimated, for each cutoff and model,
+with a cross-sectional regression across events:
 
 $$CR_{i,T} - CRF_{T} = \alpha + \sum_k \beta_k CFR_{k,T} + \varepsilon_{i,T} \quad (4.9)$$
 
-with factors {MKT} (CAPM), {MKT, SMB, HML} (FF3), {MKT, SMB, HML, UMD} (C4F)
-and {MKT, SMB, HML, RMW, CMA} (FF5). Significance refers to the one-sided test
+with factors {MKT} for the CAPM (Sharpe, 1964), {MKT, SMB, HML} for FF3 (Fama
+and French, 1993), {MKT, SMB, HML, UMD} for C4F (Carhart, 1997) and
+{MKT, SMB, HML, RMW, CMA} for FF5 (Fama and French, 2015). Significance refers to the one-sided test
 H₁: α > 0, with classical OLS standard errors.
 
 **Annualisation.** A = 252/15 = 16.8 windows per year. Means are annualised
@@ -188,14 +193,51 @@ independent, non-overlapping windows and serve only for comparison.
 **Event study.** Daily simple price returns are averaged across events for
 each t ∈ [−15, +15]. The cumulative profile is the running sum of the averages.
 Only events with a complete window are used, so each point is averaged over the
-same events.
+same events. The ex-date drop is compared with the net dividend, as in Elton
+and Gruber (1970).
 
 ## References
 
-- Carhart, M. M. (1997). On persistence in mutual fund performance. *Journal of Finance*, 52(1), 57–82.
-- Fama, E. F., & French, K. R. (1993). Common risk factors in the returns on stocks and bonds. *Journal of Financial Economics*, 33(1), 3–56.
-- Fama, E. F., & French, K. R. (2015). A five-factor asset pricing model. *Journal of Financial Economics*, 116(1), 1–22.
-- Hartzmark, S. M., & Solomon, D. H. (2013). The dividend month premium. *Journal of Financial Economics*, 109(3), 640–660.
+The complete bibliography is in the thesis. The works below are those on which
+the empirical design and the code rely.
+
+**Dividend Month Premium and international evidence**
+
+- Ainsworth, A., & Nicholson, M. (2015). Can dividend schedules predict abnormal returns? International evidence. *Financial Markets & Corporate Governance Conference*.
+- Chae, Y. K., & Koo, H.-K. (2020). Dividend-month premium in the Korean stock market. *Journal of Derivatives and Quantitative Studies*, 28(3), 193–213. https://doi.org/10.1108/JDQS-04-2020-0006
+- Chai, D., Do, V., & Strydom, M. (2025). *The dividend month premium uncovered*. Working paper, Monash University.
+- Hartzmark, S. M., & Solomon, D. H. (2013). The dividend month premium. *Journal of Financial Economics*, 109(3), 640–660. https://doi.org/10.1016/j.jfineco.2013.03.005
+- Heston, S. L., & Sadka, R. (2004). Seasonality in the cross-section of expected stock returns. AFA 2006 Boston Meetings Paper. https://doi.org/10.2139/ssrn.687022
+
+**Dividend demand, clienteles and price pressure**
+
+- Baker, M., & Wurgler, J. (2004). A catering theory of dividends. *Journal of Finance*, 59(3), 1125–1165. https://doi.org/10.1111/j.1540-6261.2004.00658.x
+- Becker, B., Ivković, Z., & Weisbenner, S. (2009). *Local dividend clienteles*. NBER Working Paper 15196. https://doi.org/10.3386/w15196
+- Bhattacharya, S. (1979). Imperfect information, dividend policy, and "the bird in the hand" fallacy. *Bell Journal of Economics*, 10(1), 259–270. https://doi.org/10.2307/3003330
+- Elton, E. J., & Gruber, M. J. (1970). Marginal stockholder tax rates and the clientele effect. *Review of Economics and Statistics*, 52(1), 68–74. https://doi.org/10.2307/1927599
+- Frazzini, A., & Lamont, O. A. (2008). Dumb money: Mutual fund flows and the cross-section of stock returns. *Journal of Financial Economics*, 88(2), 299–322. https://doi.org/10.1016/j.jfineco.2007.07.011
+- Graham, J. R., & Kumar, A. (2006). Do dividend clienteles exist? Evidence on dividend preferences of retail investors. *Journal of Finance*, 61(3), 1305–1336. https://doi.org/10.1111/j.1540-6261.2006.00873.x
+- Li, W., & Lie, E. (2006). Dividend changes and catering incentives. *Journal of Financial Economics*, 80(2), 293–308. https://doi.org/10.1016/j.jfineco.2005.03.005
+- Mancinelli, L., & Ozkan, A. (2006). Ownership structure and dividend policy: Evidence from Italian firms. *European Journal of Finance*, 12(3), 265–282. https://doi.org/10.1080/13518470500249365
+- Michaely, R., Vila, J.-L., & Wang, J. (1996). A model of trading volume with tax-induced heterogeneous investors. *Journal of Financial Intermediation*, 5(3), 340–371. https://doi.org/10.1006/jfin.1996.0015
+- Miller, M. H., & Rock, K. (1985). Dividend policy under asymmetric information. *Journal of Finance*, 40(4), 1031–1051. https://doi.org/10.1111/j.1540-6261.1985.tb02362.x
+- Shefrin, H., & Statman, M. (1984). Explaining investor preference for cash dividends. *Journal of Financial Economics*, 13(2), 253–282. https://doi.org/10.1016/0304-405X(84)90025-4
+
+**Asset pricing models and empirical methodology**
+
+- Black, F., Jensen, M. C., & Scholes, M. (1972). The capital asset pricing model: Some empirical tests. In M. C. Jensen (Ed.), *Studies in the Theory of Capital Markets* (pp. 79–121). Praeger.
+- Carhart, M. M. (1997). On persistence in mutual fund performance. *Journal of Finance*, 52(1), 57–82. https://doi.org/10.1111/j.1540-6261.1997.tb03808.x
+- Fama, E. F. (1970). Efficient capital markets: A review of theory and empirical work. *Journal of Finance*, 25(2), 383–417. https://doi.org/10.2307/2325486
+- Fama, E. F., & French, K. R. (1993). Common risk factors in the returns on stocks and bonds. *Journal of Financial Economics*, 33(1), 3–56. https://doi.org/10.1016/0304-405X(93)90023-5
+- Fama, E. F., & French, K. R. (2012). Size, value, and momentum in international stock returns. *Journal of Financial Economics*, 105(3), 457–472. https://doi.org/10.1016/j.jfineco.2012.05.011
+- Fama, E. F., & French, K. R. (2015). A five-factor asset pricing model. *Journal of Financial Economics*, 116(1), 1–22. https://doi.org/10.1016/j.jfineco.2014.10.010
+- Fama, E. F., & French, K. R. (2017). International tests of a five-factor asset pricing model. *Journal of Financial Economics*, 123(3), 441–463. https://doi.org/10.1016/j.jfineco.2016.11.004
+- Fama, E. F., & MacBeth, J. D. (1973). Risk, return, and equilibrium: Empirical tests. *Journal of Political Economy*, 81(3), 607–636. https://doi.org/10.1086/260061
+- Foye, J., Mramor, D., & Pahor, M. (2013). A respecified Fama–French three-factor model for the new European Union member states. *Journal of International Financial Management & Accounting*, 24(1), 3–25. https://doi.org/10.1111/jifm.12005
+- Griffin, J. M. (2002). Are the Fama and French factors global or country specific? *Review of Financial Studies*, 15(3), 783–803. https://doi.org/10.1093/rfs/15.3.783
+- Jensen, M. C. (1968). The performance of mutual funds in the period 1945–1964. *Journal of Finance*, 23(2), 389–416. https://doi.org/10.1111/j.1540-6261.1968.tb00815.x
+- Markowitz, H. (1952). Portfolio selection. *Journal of Finance*, 7(1), 77–91. https://doi.org/10.2307/2975974
+- Sharpe, W. F. (1964). Capital asset prices: A theory of market equilibrium under conditions of risk. *Journal of Finance*, 19(3), 425–442. https://doi.org/10.1111/j.1540-6261.1964.tb02865.x
 
 ## Citation
 
