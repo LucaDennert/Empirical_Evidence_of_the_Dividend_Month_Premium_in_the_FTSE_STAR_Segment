@@ -18,9 +18,11 @@ The thesis is available in this repository:
 The thesis tests for a Dividend Month Premium (Hartzmark and Solomon, 2013) in
 the FTSE Italia STAR segment of Borsa Italiana from January 2020 to December
 2024. The premium has also been documented outside the United States
-(Ainsworth and Nicholson, 2015; Chae and Koo, 2020; Chai, Do and Strydom, 2025). For each of the 214 dividends paid in the period, it computes the return
-of buying at the close 15 trading days before the ex-date and selling at the
-close of the day before the ex-date. Average window returns are positive and
+(Ainsworth and Nicholson, 2015; Chae and Koo, 2020; Chai, Do and Strydom, 2025).
+
+For each of the 214 dividends paid in the period, the analysis computes the
+return of buying at the close 15 trading days before the ex-date and selling
+at the close of the day before the ex-date. Average window returns are positive and
 significant, and they increase with the dividend yield. Regressing the window
 returns on cumulative European factors gives positive and significant alphas
 under the CAPM, the Fama–French three- and five-factor models and the Carhart
